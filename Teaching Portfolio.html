@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Md Ashraf Uddin - Teaching Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-10px, -10px) rotate(1deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .external-link::after {
+            content: ' ↗';
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+
+        /* Special sections */
+        .philosophy-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: scale(1.05);
+        }
+
+        .tool-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .publications-list {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .publication-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+
+        .feedback-section {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .feedback-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Achievement badges */
+        .achievement-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Dr. Md Ashraf Uddin</h1>
+                <p class="subtitle">Teaching Excellence Portfolio - IT Discipline</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>ashraf.uddin@cihe.edu.au</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>0480414199</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🏛️</span>
+                        <span>Crown Institute of Higher Education</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <div class="nav-container">
+                <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
+                <button class="nav-btn" onclick="showSection('philosophy')">Teaching Philosophy</button>
+                <button class="nav-btn" onclick="showSection('excellence')">Teaching Excellence</button>
+                <button class="nav-btn" onclick="showSection('contributions')">Contributions</button>
+                <button class="nav-btn" onclick="showSection('innovation')">Innovation</button>
+                <button class="nav-btn" onclick="showSection('leadership')">Leadership</button>
+                <button class="nav-btn" onclick="showSection('research')">Research Integration</button>
+                <button class="nav-btn" onclick="showSection('student-support')">Student Support</button>
+                <button class="nav-btn" onclick="showSection('scholarship')">Scholarship</button>
+                <button class="nav-btn" onclick="showSection('development')">Professional Development</button>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <h2>Teaching Portfolio Overview</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-number">65+</span>
+                        <span class="stat-label">Weekly Quizzes Designed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Hands-on Tests Created</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Units Taught & Coordinated</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Q1 Publications (2025)</span>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Teaching Excellence Highlights</h3>
+                        <ul>
+                            <li>Interactive lecture notes replacing traditional PowerPoint</li>
+                            <li>Comprehensive hands-on cybersecurity labs</li>
+                            <li>AI-integrated learning activities</li>
+                            <li>Student-centered assessment design</li>
+                            <li>Real-world industry connections</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Key Achievements</h3>
+                        <ul>
+                            <li>Established <a href="https://secureintelligencelab.github.io/sil/" class="external-link">Secure Intelligence Lab</a></li>
+                            <li>Created multiple innovative learning tools</li>
+                            <li>Research-informed teaching approach</li>
+                            <li>Consistent positive student feedback</li>
+                            <li>Active mentorship and leadership</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Innovation Focus Areas</h3>
+                        <ul>
+                            <li>Cybersecurity practical simulations</li>
+                            <li>Project selection and matching tools</li>
+                            <li>Interactive assessment systems</li>
+                            <li>AI-powered educational resources</li>
+                            <li>Student engagement technologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teaching Philosophy Section -->
+            <section id="philosophy" class="section">
+                <h2>Teaching Philosophy & Approach</h2>
+                
+                <div class="philosophy-section">
+                    <p><strong>Core Philosophy:</strong> Education should be broad, practical, and inclusive, equipping students not only with theoretical knowledge but also with skills that prepare them for professional success. I aim to cover a comprehensive range of topics within the subject domain while ensuring that the content is communicated in a clear and accessible way.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Real-World Application Focus</h3>
+                        <p>I emphasize teaching that connects directly to real-world applications, enabling students to see how concepts translate into practice. This includes integrating materials and exercises that prepare students for:</p>
+                        <ul>
+                            <li><a href="https://secureintelligencelab.github.io/interviewpreparation/" class="external-link">Job interview preparation</a></li>
+                            <li>Professional certifications</li>
+                            <li><a href="https://secureintelligencelab.github.io/cybersecuritycareerguide/" class="external-link">Industry career guidance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Equity & Inclusiveness</h3>
+                        <p>Equity and inclusiveness are central to my approach. I focus on each student's learning needs, providing equal attention regardless of gender, ethnicity, or background. I make it a priority to respond to student queries promptly and offer solutions that are both supportive and consistent with CIHE policies.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Lifelong Learning Motivation</h3>
+                        <p>I seek to motivate students to engage in self-directed exploration of emerging industry trends, tools, and certifications, fostering lifelong learning habits. My teaching is not just about delivering content but about inspiring curiosity, confidence, and professional growth in every student.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Teaching Excellence Section -->
+            <section id="excellence" class="section">
+                <h2>Demonstrated Excellence in Teaching</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Interactive Learning Implementation</h3>
+                        <p>I introduced <strong>interactive lecture notes</strong> that combine topic discussions with activities such as short answers, matching, ordering, debates, and MCQs.</p>
+                        <p><strong>Example:</strong> <a href="https://secureintelligencelab.github.io/ict940week1lecture/" class="external-link">Introduction to Information Security - Interactive Notes</a></p>
+                        <p>These replace traditional lecture slides to create more engaging classroom experiences.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Structured Assessment System</h3>
+                        <p>In cybersecurity classes, students:</p>
+                        <ul>
+                            <li>Generate a PDF in the first hour</li>
+                            <li>Engage in practical tasks throughout the session</li>
+                            <li>Complete open-book quizzes in the final half-hour</li>
+                            <li>Submit 5 hands-on tests on Moodle per unit</li>
+                        </ul>
+                        <p>Across 10 weeks, quizzes contribute 10% of overall grade, ensuring consistent participation and focus.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Units Taught & Coordinated</h3>
+                        <ul>
+                            <li>ICT 940 - Risk Management in Cybersecurity</li>
+                            <li>ICT 932 - Cybersecurity Testing and Assurance</li>
+                            <li>ICT 931 - Cybersecurity Incident Response</li>
+                            <li>ICT 306 - Advanced Security</li>
+                            <li>ICT 204 - Cybersecurity</li>
+                            <li>ICT 305 - Topics in IT</li>
+                            <li>ICT 910 - Enterprise Systems Security</li>
+
+                            <li>Contributing to ICT 942, ICT 946, ICT 910 development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="feedback-section">
+                    <h3>Student Feedback Highlights</h3>
+                    <div class="feedback-item">
+                        "More hands-on learning was highly valued" - Student feedback consistently confirms the effectiveness of practical activities.
+                    </div>
+                    <div class="feedback-item">
+                        Students appreciate the use of interactive lecture notes and AI-integrated learning tasks as highly engaging and job-ready preparation.
+                    </div>
+                    <div class="feedback-item">
+                        Lecturers teaching cybersecurity units have adopted and appreciated the innovative teaching methods and resources.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Supporting Resources</h3>
+                    <ul>
+                        <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/Ekeic7XKyiJMsOfvC0VFDGUBCHC8Tokd4IXS_LdW8Zsd7A?e=YPCUR7" class="external-link">Teaching Evaluation Reports</a> (SharePoint)</li>
+                        <li><a href="https://crownhe.sharepoint.com/:v:/s/ICT940RiskManagementinCybersecurity/EYSlg7meV8JDgNX5AV60OYIBCAoWy5DgIwOQKDM8AgqafQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=EnwoJl" class="external-link">Hands-on Learning Recordings</a> - ICT 940, 931, 932</li>
+                        <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/EkmEpXVDcLVBl3RWLqhLeT8B92pK9zr6t-HkSwTraNtLAQ?e=jEaRSz" class="external-link">Interactive Tutorial Materials</a> (SharePoint)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Contributions Section -->
+            <section id="contributions" class="section">
+                <h2>Contributions to the Field of Teaching</h2>
+
+                <div class="publications-list">
+                    <h3>2025 Publications (Q1 Journals)</h3>
+                    <div class="publication-item">
+                        <strong><a href="https://ieeexplore.ieee.org/document/11098515" class="external-link">A Scalable Hierarchical Intrusion Detection System for Internet of Vehicles</a></strong>
+                        <p>IEEE Internet of Things Journal</p>
+                    </div>
+                    <div class="publication-item">
+                        <strong><a href="https://www.mdpi.com/1424-8220/25/11/3450" class="external-link">A Zero-Knowledge Proof-Enabled Blockchain-Based Academic Record Verification System</a></strong>
+                        <p>MDPI Sensors</p>
+                    </div>
+                    <div class="publication-item">
+                        <strong><a href="https://link.springer.com/article/10.1007/s44174-024-00264-3" class="external-link">An Integrated Deep Learning Model for Skin Cancer Detection Using Hybrid Feature Fusion Technique</a></strong>
+                        <p>Springer</p>
+                    </div>
+                    <div class="publication-item">
+                        <strong><a href="https://link.springer.com/article/10.1007/s13177-025-00471-2" class="external-link">Abnormal Driving Behavior Detection: A Machine and Deep Learning Based Hybrid Model</a></strong>
+                        <p>Springer</p>
+                    </div>
+                    <div class="publication-item">
+                        <strong><a href="https://arxiv.org/abs/2508.10346" class="external-link">A Hierarchical IDS for Zero-Day Attack Detection in Internet of Medical Things Networks</a></strong>
+                        <p>Preprint (arXiv)</p>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Interactive Lecture Materials</h3>
+                        <p>I contribute by designing interactive lecture materials and hands-on activities that have been shared with colleagues across multiple units, fostering a culture of innovation in teaching at CIHE.</p>
+                        <ul>
+                            <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/EqjiO6C5p-1Ej8PFnTnbq28BbOeUELZv1WW3MNQ_JsBTIA?e=lkMMwp" class="external-link">ICT 940 Interactive Lectures S2 2025</a></li>
+                            <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/EkCMISAHi3RPnrZJ84lFl8QBdsS2fehak9O-sDo28CiFwQ?e=kQuTYq" class="external-link">ICT 932 Interactive Lectures S2 2025</a></li>
+                            <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/EmxHUXULLjhAuwE3NfT75S8BrZoq8zZpG9rplmZXik67Rg?e=7lMoKC" class="external-link">ICT 931 Interactive Lectures S2 2025</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Editorial & Conference Service</h3>
+                        <ul>
+                            <li><strong>Guest Editor:</strong> <a href="https://www.mdpi.com/journal/sensors/special_issues/V18H1B31V1" class="external-link">Special Issue on Securing E-Health Data</a> - Sensors, MDPI (2024-present)</li>
+                            <li><strong>PC Member:</strong> <a href="https://hikm.org/" class="external-link">Health Informatics Knowledge Management Conference (HIKM 2025)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Research-Teaching Integration</h3>
+                        <p>These publications not only advance research in emerging technologies but also enrich my teaching by allowing me to incorporate <strong>real-world, research-driven case studies</strong> into the classroom, enhancing motivation and job readiness.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Innovation Section -->
+            <section id="innovation" class="section">
+                <h2>Innovation & Creativity in Teaching</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Comprehensive Hands-on Learning</h3>
+                        <p>Introduced comprehensive hands-on learning activities across cybersecurity units (ICT940, ICT932, ICT931, ICT306, ICT204):</p>
+                        <ul>
+                            <li>Phishing attack simulations</li>
+                            <li>DoS and spoofing attacks</li>
+                            <li>Social engineering exercises</li>
+                            <li>Penetration testing</li>
+                            <li>Vulnerability scanning</li>
+                            <li>AWS identity management</li>
+                            <li>Risk assessment activities</li>
+                            <li>Digital forensics labs</li>
+                            <li>Malware simulation and analysis</li>
+                        </ul>
+                        <p><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/ErPTsfb_tkVFl9laneMfccABmFWW2DDJE0ZQ0ix6FnUCGw?e=yN7389" class="external-link">View Tutorial Materials S2 2025</a></p>
+                    </div>
+                </div>
+
+                <div class="innovation-grid">
+                    <div class="tool-card">
+                        <h4><a href="https://secureintelligencelab.github.io/itcapstoneprojectchoicetool/" class="external-link">IT Capstone Project Choice Tool</a></h4>
+                        <p>Helps Bachelor students easily choose capstone project topics and form groups</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="https://rashelashraf.github.io/projectchoicemaker/" class="external-link">Cybersecurity Project Matchmaker</a></h4>
+                        <p>Advanced project selection tool for Masters students</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="https://secureintelligencelab.github.io/presentationassessmenttool/" class="external-link">Presentation Assessment Tool</a></h4>
+                        <p>Rapid marking system for student presentations with comprehensive feedback generation</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4>Exam Hall Management System</h4>
+                        <p>Automated time announcements and password distribution for final exams</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="https://rashelashraf.github.io/RiskAssessmentTemplate/" class="external-link">Advanced Cyber Risk Assessment Tool</a></h4>
+                        <p>Interactive tool for solving real-life cybersecurity risk problems</p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4><a href="https://rashelashraf.github.io/BusinessImpactAnalysis/" class="external-link">Contingency Planning Template Generator</a></h4>
+                        <p>Business impact analysis and planning tool for students</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>AI Integration</h3>
+                    <p>I have incorporated AI-powered tools and tasks where students explore:</p>
+                    <ul>
+                        <li>Automated vulnerability testing</li>
+                        <li>Incident reporting systems</li>
+                        <li>Adversarial attack simulations</li>
+                        <li>AI-driven learning support</li>
+                        <li>Prompt engineering exercises</li>
+                    </ul>
+                    <p>These activities help students develop critical future-ready skills while connecting classroom activities to cutting-edge industry practices.</p>
+                </div>
+            </section>
+
+            <!-- Leadership Section -->
+            <section id="leadership" class="section">
+                <h2>Leadership in Teaching</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Unit Coordination Leadership</h3>
+                        <p>At the beginning of each semester, I record introductory videos for units I coordinate, clearly outlining:</p>
+                        <ul>
+                            <li>Unit expectations and learning outcomes</li>
+                            <li>Weekly quiz rules and procedures</li>
+                            <li>Hands-on learning submission policies</li>
+                            <li>Assessment breakdowns and criteria</li>
+                            <li>Academic integrity guidelines</li>
+                        </ul>
+                        <p><strong>Example:</strong> <a href="https://crownhe.sharepoint.com/:v:/s/AcademicMisconduct/EUd9y9bpHZBIr86eFEE9G3UBqkRneF6MyZJ6qBbMGFDLPA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=RlplFn" class="external-link">Introduction to ICT 931 Cybersecurity Incident Response</a></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Teaching Support Systems</h3>
+                        <p>I maintain comprehensive support systems:</p>
+                        <ul>
+                            <li><strong>Outlook groups</strong> for each unit to coordinate with lecturers</li>
+                            <li><strong>Team Classrooms</strong> including all students and teaching staff</li>
+                            <li><strong>Teaching and Learning Plans</strong> for each week</li>
+                            <li><strong>Weekly hands-on learning demonstrations</strong> for lecturer support</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Team Classrooms</h3>
+                        <ul>
+                            <li><a href="https://teams.microsoft.com/l/team/19%3AgTAh8O1h1gHlTykG4N_8ZJ6y3IPEKtSNTD38y8iTOAI1%40thread.tacv2/conversations?groupId=336df4ce-b279-4f30-aab3-6e52e1b5f4d3&tenantId=74d551e1-0d21-4086-904e-c464373aa33b" class="external-link">ICT 940 Risk Management in Cybersecurity S2 2025</a></li>
+                            <li><a href="https://teams.microsoft.com/l/team/19%3AQWu0fBAswabFqPc55VhmoSl0oq5v5RNBiqJA6DrfYxM1%40thread.tacv2/conversations?groupId=cbfc076c-a51f-4644-89f8-cf157254eb6b&tenantId=74d551e1-0d21-4086-904e-c464373aa33b" class="external-link">ICT 931 Cybersecurity Incident Response S2 2025</a></li>
+                            <li><a href="https://teams.microsoft.com/l/team/19%3AQQKRy5K5AUwtvzhnM39zfMD7QUIs_IDMRJrYAyooWuc1%40thread.tacv2/conversations?groupId=487e2d93-dfc2-4bcb-ade4-6007431938d5&tenantId=74d551e1-0d21-4086-904e-c464373aa33b" class="external-link">ICT 932 Cybersecurity Testing and Assurance S2 2025</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Mentorship & Collaboration</h3>
+                        <p>I assist less experienced staff by:</p>
+                        <ul>
+                            <li>Recording hands-on learning demonstrations</li>
+                            <li>Sharing interactive lecture notes as best practices</li>
+                            <li>Processing results during colleagues' challenging times</li>
+                            <li>Conducting misconduct meetings</li>
+                            <li>Marking supplementary exam scripts</li>
+                        </ul>
+                        <p><a href="#https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/Ev1OHjFADmJNsqke2w0U0EQBAtcrEyNECT5AZ8HLFa4rmg?e=hMwaPz" class="external-link">Email Communications Evidence</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Integration Section -->
+            <section id="research" class="section">
+                <h2>Foster Research-Informed Teaching</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Research Expertise Integration</h3>
+                        <p>My teaching is strongly influenced by my research in <strong>machine learning, cybersecurity, and blockchain</strong>. From 2017 to 2025, I have published several articles in Q1 journals, consistently drawing upon these findings to design classroom activities, labs, and student projects.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Student Project Supervision</h3>
+                        <p>I have supervised capstone projects directly aligned with my research expertise:</p>
+                        <ul>
+                            <li><strong>3 Master's-level capstone classes</strong></li>
+                            <li><strong>1 Bachelor's capstone class</strong></li>
+                        </ul>
+                        <p><strong>Project Areas:</strong></p>
+                        <ul>
+                            <li>Zero-day attack detection using machine learning</li>
+                            <li>Blockchain-based decentralized applications</li>
+                            <li>E-voting systems</li>
+                            <li>Supply chain management solutions</li>
+                            <li>Antique verification systems</li>
+                            <li>Hybrid models for cybersecurity threat detection</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Research-Informed Labs</h3>
+                        <p>I embed research findings into practical labs:</p>
+                        <ul>
+                            <li>Phishing email detection systems</li>
+                            <li>Cyberbullying detection algorithms</li>
+                            <li>Adversarial attack simulations</li>
+                            <li>Machine learning security applications</li>
+                        </ul>
+                        <p>These labs give students hands-on exposure to the same techniques and tools used in academic and industry research.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Benefits to Students</h3>
+                        <p>By integrating scholarly literature and publications into teaching, students benefit by:</p>
+                        <ul>
+                            <li>Mastering technical skills with research context</li>
+                            <li>Understanding current research landscape</li>
+                            <li>Learning implications for practice</li>
+                            <li>Developing critical thinking skills</li>
+                            <li>Exploring emerging challenges</li>
+                            <li>Building confidence to solve real-world problems</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Support Section -->
+            <section id="student-support" class="section">
+                <h2>Service to Students</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Responsive Communication</h3>
+                        <p>I am deeply committed to supporting student learning through:</p>
+                        <ul>
+                            <li>Timely communication and feedback</li>
+                            <li>Email availability including weekends</li>
+                            <li>Prompt query responses with student-friendly solutions</li>
+                            <li>Real-time support via Team Chat</li>
+                        </ul>
+                        <p><strong>Evidence:</strong> Students consistently receive support within minutes of seeking help, even on weekends.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Comprehensive Support Systems</h3>
+                        <ul>
+                            <li><strong>Team Classrooms:</strong> Access to weekly recordings and resources</li>
+                            <li><strong>Hands-on Task Guidance:</strong> Step-by-step support materials</li>
+                            <li><strong>Interactive Learning Tools:</strong> Web-based assignments and feedback systems</li>
+                            <li><strong>Project Selection Tools:</strong> Guidance for capstone project alignment</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Feedback-Driven Improvements</h3>
+                        <p>Student feedback is central to my teaching improvements:</p>
+                        <ul>
+                            <li>Clarification of assignment requirements based on feedback</li>
+                            <li>Expansion of interactive lecture notes</li>
+                            <li>Introduction of more hands-on activities</li>
+                            <li>Assessment guideline revisions for transparency</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Professional Development Investment</h3>
+                        <p>To bring current industry practices into the classroom:</p>
+                        <ul>
+                            <li><strong>TryHackMe</strong> subscription</li>
+                            <li><strong>Udemy</strong> ethical hacking courses</li>
+                            <li><strong>Google Cybersecurity Certificate</strong></li>
+                            <li><strong>AWS Academy</strong> resources</li>
+                            <li>CIHE professional development workshops</li>
+                            <li>AI tools integration training</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Individual Student Care</h3>
+                        <p><strong>Case Examples:</strong></p>
+                        <ul>
+                            <li>Multiple reminder emails for pending assessments</li>
+                            <li>Personal email outreach when institutional emails fail</li>
+                            <li>Direct lecturer coordination for student communication</li>
+                            <li>Extended support for struggling students</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Scholarship Section -->
+            <section id="scholarship" class="section">
+                <h2>Scholarly Approach to Teaching</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>Research Excellence</h3>
+                        <p>I maintain strong commitment to professional development by continuously enhancing both research expertise and teaching practices. My research in machine learning, cybersecurity, and blockchain enriches teaching with cutting-edge insights.</p>
+                        <p><strong>Recent Achievement:</strong> Co-authored article in <strong>IEEE Internet of Things Journal</strong> (Impact Factor 8.9) - <a href="https://ieeexplore.ieee.org/document/11098515" class="external-link">Scalable Hierarchical Intrusion Detection System</a></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Secure Intelligence Lab</h3>
+                        <p>Established the <a href="https://secureintelligencelab.github.io/sil/" class="external-link">Secure Intelligence Lab</a> hosted on GitHub, where I design and share practical cybersecurity labs supporting both students and the broader teaching community.</p>
+                        <ul>
+                            <li>Research-informed practical resources</li>
+                            <li>Accessible learning materials</li>
+                            <li>Community collaboration platform</li>
+                            <li>Weekly research meetings leadership</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Research Leadership Activities</h3>
+                        <ul>
+                            <li><strong>Research Manager:</strong> Secure Intelligence Lab</li>
+                            <li><strong>Weekly Research Meetings:</strong> Fostering collaboration</li>
+                            <li><strong>Junior Researcher Mentoring</strong></li>
+                            <li><strong>Scholarship-Teaching Integration</strong></li>
+                            <li><strong>International Collaborations:</strong> <em>Computer Networks, Elsevier</em></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Teaching-Focused Development</h3>
+                        <p>Active engagement in teaching-focused professional development:</p>
+                        <ul>
+                            <li><strong>CIHE Workshops:</strong> AI integration in education</li>
+                            <li><strong>Assessment Design:</strong> Innovative approaches</li>
+                            <li><strong>Student Engagement:</strong> Strategy development</li>
+                            <li><strong>Industry Alignment:</strong> Google Cybersecurity Certificate, (SC)²CC, AWS Academy</li>
+                            <li><strong>Ethical Hacking:</strong> Udemy programs</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Mentoring & Supervision</h3>
+                        <p>Evidence of research supervision and mentoring:</p>
+                        <ul>
+                            <li>Graduate research project supervision</li>
+                            <li>Undergraduate capstone mentoring</li>
+                            <li>Junior faculty research guidance</li>
+                            <li>International research collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Development Section -->
+            <section id="development" class="section">
+                <h2>Professional Development Participation</h2>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h3>CIHE Development Activities</h3>
+                        <p>Regular attendance at CIHE professional development workshops:</p>
+                        <ul>
+                            <li><strong>AI Tools in Education:</strong> Integration strategies</li>
+                            <li><strong>Innovative Assessment Design:</strong> Modern approaches</li>
+                            <li><strong>Student Engagement Strategies:</strong> Enhanced participation</li>
+                            <li><strong>Technology Integration:</strong> Classroom applications</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Industry Certifications</h3>
+                        <div class="achievement-badge">Splunk Certified</div>
+                        <div class="achievement-badge">(SC)² CC Certified</div>
+                        <div class="achievement-badge">Google Cybersecurity</div>
+                        <div class="achievement-badge">AWS Academy</div>
+                        <ul>
+                            <li><strong>Google Cybersecurity Certificate:</strong> Self-study via curated resources</li>
+                            <li><strong>AWS Academy Courses:</strong> Cloud security and identity management</li>
+                            <li><strong>Ethical Hacking Courses:</strong> Udemy penetration testing</li>
+                            <li><strong>TryHackMe Subscription:</strong> Hands-on cybersecurity practice</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Direct Teaching Impact</h3>
+                        <p><strong>AI Integration Workshop Impact:</strong></p>
+                        <ul>
+                            <li>Incorporated AI-driven activities in cybersecurity units</li>
+                            <li>Student exposure to emerging tools and practices</li>
+                            <li>Enhanced future-ready skill development</li>
+                        </ul>
+                        
+                        <p><strong>Industry Training Application:</strong></p>
+                        <ul>
+                            <li>Expanded hands-on labs with realistic tasks</li>
+                            <li>Phishing detection exercises</li>
+                            <li>Identity management simulations</li>
+                            <li>Vulnerability scanning practices</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Continuous Learning Commitment</h3>
+                        <p>By consistently engaging with professional development opportunities, I ensure my teaching remains:</p>
+                        <ul>
+                            <li><strong>Innovative:</strong> Latest educational technologies</li>
+                            <li><strong>Evidence-based:</strong> Research-informed practices</li>
+                            <li><strong>Industry-relevant:</strong> Current professional standards</li>
+                            <li><strong>Student-centered:</strong> Enhanced engagement strategies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Supporting Documentation</h3>
+                    <ul>
+                        <li><a href="https://crownhe-my.sharepoint.com/:b:/g/personal/ashraf_uddin_cihe_edu_au/EQaNpsoXdYVDhoOpS3d49r8B2ILR4qc05b_9J-E8VDAx2g?e=EfrITm" class="external-link">Updated Curriculum Vitae</a></li>
+                        <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/Ekeic7XKyiJMsOfvC0VFDGUBCHC8Tokd4IXS_LdW8Zsd7A?e=K8dFq8" class="external-link">Student Feedback Collections</a></li>
+                        <li><a href="https://crownhe-my.sharepoint.com/:f:/g/personal/ashraf_uddin_cihe_edu_au/Ev1OHjFADmJNsqke2w0U0EQBAtcrEyNECT5AZ8HLFa4rmg?e=FVHlXB" class="external-link">Teaching Leadership Evidence</a></li>
+                        <li><a href="https://github.com/secureintelligencelab" class="external-link">GitHub - Secure Intelligence Lab</a></li>
+                        <li><a href="https://github.com/rashelashraf" class="external-link">GitHub - Innovation Tools</a></li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                setTimeout(() => {
+                    selectedSection.classList.add('active');
+                }, 100);
+            }
+
+            // Add active class to clicked nav button
+            event.target.classList.add('active');
+
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add smooth scrolling and enhanced interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate sections when they become visible
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all cards for animation
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add click effects to cards
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Add loading animation for external links
+            const externalLinks = document.querySelectorAll('.external-link');
+            externalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Add visual feedback for external link clicks
+                    this.style.opacity = '0.7';
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 200);
+                });
+            });
+
+            // Keyboard navigation support
+            document.addEventListener('keydown', function(e) {
+                if (e.key >= '1' && e.key <= '9') {
+                    const navButtons = document.querySelectorAll('.nav-btn');
+                    const index = parseInt(e.key) - 1;
+                    if (navButtons[index]) {
+                        navButtons[index].click();
+                    }
+                }
+            });
+
+            // Add tooltip for keyboard shortcuts
+            const nav = document.querySelector('nav');
+            const tooltip = document.createElement('div');
+            tooltip.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 0.8rem;
+                display: none;
+                z-index: 1000;
+            `;
+            tooltip.innerHTML = 'Tip: Use keys 1-9 to navigate sections quickly';
+            document.body.appendChild(tooltip);
+
+            // Show tooltip on first visit
+            setTimeout(() => {
+                tooltip.style.display = 'block';
+                setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.transition = 'opacity 0.5s';
+                }, 3000);
+            }, 2000);
+        });
+
+        // Add dynamic stats counter animation
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                const increment = target / 20;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    }
+                }, 50);
+            });
+        }
+
+        // Trigger stats animation when overview section is active
+        const overviewSection = document.getElementById('overview');
+        if (overviewSection.classList.contains('active')) {
+            setTimeout(animateStats, 500);
+        }
+
+        // Re-trigger animation when returning to overview
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-btn') && e.target.textContent === 'Overview') {
+                setTimeout(animateStats, 600);
+            }
+        });
+    </script>
+</body>
+</html>
